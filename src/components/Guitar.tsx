@@ -5,7 +5,13 @@ type Guitar = {
     description: string;
     price: number;
 }
-const Guitar = ({guitar, addToCart}: { guitar: Guitar, addToCart: (item: Guitar) => void }) => {
+
+type GuitarProps = {
+    guitar: Guitar,
+    addToCart: (item: Guitar) => void
+}
+
+const Guitar = ({guitar, addToCart}: GuitarProps) => {
 
 
     const {name, image, description, price} = guitar
