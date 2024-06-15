@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useState} from "react";
 import {db} from "../data/db.js";
-import type {CartItem} from "../types";
+import type {Guitar, CartItem} from "../types";
 
 const useCart = () => {
 
@@ -18,7 +18,7 @@ const useCart = () => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart])
 
-    function addToCart(item: CartItem) {
+    function addToCart(item: Guitar) {
         const itemExists = cart.findIndex((guitar) => guitar.id === item.id);
         if (itemExists >= 0) {
             if (cart[itemExists].quantity >= MAX_ITEMS) return;
@@ -26,8 +26,8 @@ const useCart = () => {
             updatedCart[itemExists].quantity++;
             setCart(updatedCart);
         } else {
-            item.quantity = 1;
-            setCart([...cart, item])
+            const newItem: CartItem = {...item, quantity: 1};
+            setCart([...cart, newItem])
         }
     }
 
