@@ -9,3 +9,6 @@ export type Guitar = {
 export type CartItem = Guitar & {
     quantity: number;
 }
+
+// export type GuitarId = Pick<Guitar, "id">
+// export type GuitarId = Guitar["id"];
