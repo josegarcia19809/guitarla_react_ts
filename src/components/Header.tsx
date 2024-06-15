@@ -1,21 +1,23 @@
+import type {CartItem, Guitar} from "../types";
+
+type HeaderProps = {
+    cart: CartItem[]
+    removeFromCart: (id: Guitar["id"]) => void
+    increaseQuantity: (id: Guitar["id"]) => void
+    decreaseQuantity: (id: Guitar["id"]) => void
+    clearCart: () => void
+    isEmpty?: boolean
+    cartTotal: number
+}
 const Header = ({
-                    // eslint-disable-next-line react/prop-types
                     cart,
-                    // eslint-disable-next-line react/prop-types
                     removeFromCart,
-                    // eslint-disable-next-line react/prop-types
                     increaseQuantity,
-                    // eslint-disable-next-line react/prop-types
                     decreaseQuantity,
-                    // eslint-disable-next-line react/prop-types
                     clearCart,
-                    // eslint-disable-next-line react/prop-types
                     isEmpty,
-                    // eslint-disable-next-line react/prop-types
                     cartTotal
-                }) => {
-
-
+                }: HeaderProps) => {
     return (
         <header className="py-5 header">
             <div className="container-xl">
@@ -57,7 +59,6 @@ const Header = ({
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {/* eslint-disable-next-line react/prop-types */}
                                             {cart.map(guitar => (
                                                 <tr key={guitar.id}>
                                                     <td>
